@@ -1,0 +1,34 @@
+{
+    "name": "proton-framework",
+    "version": "0.0.1",
+    "description": "a flutter inspired frontend framework",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/erlage/proton-framework.git"
+    },
+    "keywords": [
+        "proton",
+        "framework",
+        "frontend",
+        "flutter",
+        "web"
+    ],
+    "author": "erlage <erlage.inc@gmail.com>",
+    "license": "BSD-3-Clause",
+    "bugs": {
+        "url": "https://github.com/erlage/proton-framework/issues"
+    },
+    "homepage": "https://github.com/erlage/proton-framework#readme",
+    "scripts": {
+        "build": "rm -rf dist && tsc && rollup -c rollup.config.js"
+    },
+    "types": "dist/proton.d.ts",
+    "files": [
+        "/dist"
+    ],
+    "devDependencies": {
+        "@rollup/plugin-typescript": "^8.3.0",
+        "tslib": "^2.3.1",
+        "typescript": "^4.5.5"
+    }
+}

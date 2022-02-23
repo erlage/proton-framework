@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "es6",
+    "target": "es6",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "diagnostics": true,
+    "removeComments": true,
+    "declaration": true,
+    "stripInternal": true,
+    "noImplicitAny": true
+  },
+  "include": ["src/**/*"]
+}
