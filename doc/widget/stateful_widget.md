@@ -2,7 +2,7 @@
 
 A stateful widget is a widget that can be used to describe dynamic user interface. `StatefulWidget` exposes three lifecycle methods and one state function(`setState`).
 
-## Props
+### Props
 
 ```typescript
 type StatelessWidgetProps = {
@@ -10,17 +10,17 @@ type StatelessWidgetProps = {
 };
 ```
 
-## Lifecycle methods
+### Lifecycle methods
 
 - `initState()` - called before widget build.
 - `build(context: BuildContext): Widget` - called after state is initialized, should return a interface to build.
 - `dispose()` - fired before framework disposes the widget.
 
-## Functions
+### Functions
 
 - `setState(callable?: CallableFuntion)` - can be used to force a widget rebuild. Please note that `setState()` cascade rebuild call i.e it forces every child widget to rebuild itself. If you've any `StatefulWidget`s in child tree then those'll be disposed off too and framework will rebuild them one by one.
 
-## Usage
+### Usage
 
 - Simple state example:
 
