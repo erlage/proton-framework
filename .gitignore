@@ -1,5 +1,6 @@
 /.vscode
 /node_modules
 /dist
-/src/test-run.ts
+/src/test/
+/test/
 /index.html

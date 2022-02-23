@@ -24,7 +24,8 @@
     },
     "types": "dist/proton.d.ts",
     "files": [
-        "/dist"
+        "/dist",
+        "!/dist/test"
     ],
     "devDependencies": {
         "@rollup/plugin-typescript": "^8.3.0",
