@@ -61,7 +61,7 @@ class AppWidgetRenderObject extends RenderObject {
   }
 
   render(painter: Painter) {
-    painter.resetStyles();
+    painter.domNode.style.all = "unset";
 
     painter.renderSingleWidget({
       parentKey: this.context.key,

@@ -45,20 +45,14 @@ class TextRenderObject extends RenderObject {
   }
 
   render(painter: Painter) {
-    if (undefined != this.props.class) {
-      painter.insertCssClasses([this.props.class]);
-    }
-
-    if (undefined != this.props.classes) {
-      painter.insertCssClasses(this.props.classes);
-    }
+    painter.domNode.className = (this.props.class ?? "") + " " + this.props.classes?.join(" ");
 
     if (undefined !== this.props.isHtml && this.props.isHtml) {
-      painter.renderHtml(this.props.text);
+      painter.domNode.innerHTML = this.props.text;
 
       return;
     }
 
-    painter.renderText(this.props.text);
+    painter.domNode.innerText = this.props.text;
   }
 }

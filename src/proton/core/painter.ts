@@ -7,48 +7,17 @@ type WidgetToRenderProp = ParentKeyProp & {
   widget: Widget;
 };
 
-type EventListenerProp = {
-  type: "click"; // -> part of [HTMLElementEventMap]
-  bind: Object;
-  capture: boolean;
-  listener: CallableFunction;
-};
-
 export class Painter {
   private domObject: DomObject;
+  domNode: HTMLElement;
 
   constructor(domObject: DomObject) {
     this.domObject = domObject;
+    this.domNode = this.domObject.domNode;
 
     if (StatefulWidget.name == this.domObject.context.widgetType) {
       this.incrementBuildCount();
     }
-  }
-
-  renderText(textContents: string) {
-    this.domObject.domNode.innerText = textContents;
-  }
-
-  renderHtml(htmlContents: string) {
-    this.domObject.domNode.innerHTML = htmlContents;
-  }
-
-  insertCssClasses(classes: string[]) {
-    if (classes.length > 0) {
-      this.domObject.domNode.classList.add(...classes);
-    }
-  }
-
-  resetStyles() {
-    this.domObject.domNode.style.all = "unset";
-  }
-
-  attachEventListerner(props: EventListenerProp) {
-    this.domObject.domNode.addEventListener(
-      props.type,
-      (event: MouseEvent) => props.listener.bind(props.bind)(event),
-      props.capture,
-    );
   }
 
   renderSingleWidget(props: WidgetToRenderProp) {

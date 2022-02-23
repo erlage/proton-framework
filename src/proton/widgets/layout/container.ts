@@ -43,13 +43,7 @@ class ContainerRenderObject extends RenderObject {
   }
 
   render(painter: Painter) {
-    if (undefined != this.props.class) {
-      painter.insertCssClasses([this.props.class]);
-    }
-
-    if (undefined != this.props.classes) {
-      painter.insertCssClasses(this.props.classes);
-    }
+    painter.domNode.className = (this.props.class ?? "") + " " + this.props.classes?.join(" ");
 
     painter.renderSingleWidget({
       parentKey: this.context.key,
