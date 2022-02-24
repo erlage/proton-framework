@@ -22,9 +22,7 @@ type ProtonAppProps = {
 new ProtonApp({
   target: "root-div",
   home: Container({
-    child: Text({
-      text: "hello world",
-    }),
+    child: Text("Hello world"),
   }),
 });
 ```

@@ -19,8 +19,6 @@ type ContainerProps = {
 
 ```typescript
 Container({
-  child: Text({
-    text: "Some text",
-  }),
+  child: Text("Some text"),
 });
 ```

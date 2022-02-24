@@ -31,9 +31,7 @@ type GestureDetectorProps = {
   ```typescript
   GestureDetector({
     onTap: () => alert("working"),
-    child: Text({
-      text: "Some text",
-    }),
+    child: Text("Some text"),
   });
   ```
 
@@ -43,9 +41,7 @@ type GestureDetectorProps = {
   GestureDetector({
     child: Container({
       child: GestureDetector({
-        child: Text({
-          text: "Some text",
-        }),
+        child: Text("Try clicking here"),
 
         onTap: () => alert("won't be fired at all cus outer detector is opaque"),
       }),

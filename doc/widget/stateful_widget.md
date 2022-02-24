@@ -13,7 +13,7 @@ type StatelessWidgetProps = {
 ### Lifecycle methods
 
 - `initState()` - called before widget build.
-- `build(context: BuildContext): Widget` - called after state is initialized, should return a interface to build.
+- `build(context: BuildContext): Widget` - called when framework decides to render widget and should return widgets to build.
 - `dispose()` - fired before framework disposes the widget.
 
 ### Functions
@@ -30,9 +30,7 @@ type StatelessWidgetProps = {
 
     build() {
       return GestureDetector({
-        child: Text({
-          text: this.isClicked ? "clicked" : "click me!",
-        }),
+        child: Text(this.isClicked ? "clicked" : "click me!"),
 
         onTap: () => this.handleTap(),
       });
@@ -58,9 +56,7 @@ type StatelessWidgetProps = {
 
     build(context: BuildContext) {
       return GestureDetector({
-        child: Text({
-          text: this.isClicked ? "clicked" : "click me!",
-        }),
+        child: Text(this.isClicked ? "clicked" : "click me!"),
 
         onTap: () => this.handleTap(),
       });

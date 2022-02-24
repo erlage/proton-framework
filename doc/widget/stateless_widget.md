@@ -15,9 +15,7 @@ type StatelessWidgetProps = {
 ```typescript
 class MyWidget extends StatelessWidget {
   build() {
-    return Text({
-      text: "hello world",
-    });
+    return Text("Hello world");
   }
 }
 
