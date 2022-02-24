@@ -25,10 +25,16 @@ export class DomObject {
   }
 
   mount() {
-    this.parent()?.append(this.domNode);
+    this.parent().append(this.domNode);
   }
 
   parent() {
-    return document.getElementById(this.context.parentKey);
+    let parent = document.getElementById(this.context.parentKey);
+
+    if (undefined == parent) {
+      throw `Parent doesn't exist: #${this.context.parentKey}`;
+    }
+
+    return parent;
   }
 }
