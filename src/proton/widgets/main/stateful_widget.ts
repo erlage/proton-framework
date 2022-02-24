@@ -18,32 +18,22 @@ export abstract class StatefulWidget implements Widget {
   }
 
   builder(context: BuildableContext) {
-    //
-    // keep state intact during widget rebuilds
-    //
-    if (undefined == this.renderObject) {
-      //
-      // lifecycle hook, init state
-      //
-      this.initState();
-
-      this.renderObject = new StatefulWidgetRenderObject({
-        key: this.props?.key,
-        parentKey: context.parentKey,
-
-        dispose: () => this.dispose(),
-      });
+    if (undefined != this.renderObject) {
+      throw "Framework must not call builder() more than once";
     }
 
-    // always call build to get upto-date interface for building
+    this.initState();
 
-    this.renderObject.setChildWidget(this.statefulBuild(this.renderObject.context));
+    this.renderObject = new StatefulWidgetRenderObject({
+      key: this.props?.key,
+      parentKey: context.parentKey,
+
+      dispose: () => this.dispose(),
+    });
+
+    this.renderObject.setChildWidget(this.build(this.renderObject.context));
 
     return this.renderObject;
-  }
-
-  private statefulBuild(context: BuildContext) {
-    return this.build(context);
   }
 
   initState(): void {}
@@ -53,8 +43,11 @@ export abstract class StatefulWidget implements Widget {
   dispose(): void {}
 
   setState(closure?: CallableFunction) {
+    if (undefined == this.renderObject) {
+      throw "setState() called while initState() was not completed.";
+    }
     if (this.isRebuilding) {
-      throw "setState() called during build.";
+      throw "setState() called while widget was building. Usually happens when you call setState() in build()";
     }
 
     this.isRebuilding = true;
@@ -63,15 +56,11 @@ export abstract class StatefulWidget implements Widget {
       closure();
     }
 
-    if (undefined == this.renderObject) {
-      throw "setState() called while initState() was not completed.";
-    }
-
-    // call build method
+    // get new interface
 
     this.renderObject.setChildWidget(this.build(this.renderObject.context));
 
-    // rebuild
+    // do rebuild
 
     this.renderObject.rebuild();
 
