@@ -86,7 +86,7 @@ Each widget accept different set of properties(params, props, whatever).
 - [Container](https://github.com/erlage/proton-framework/blob/main/doc/widget/layout/container.md)
 - [Stack](https://github.com/erlage/proton-framework/blob/main/doc/widget/layout/stack.md)
 - [Positioned](https://github.com/erlage/proton-framework/blob/main/doc/widget/layout/positioned.md)
-  - [Positioned.filled](https://github.com/erlage/proton-framework/blob/main/doc/widget/layout/positioned.filled.md)
+  - [Positioned.fill](https://github.com/erlage/proton-framework/blob/main/doc/widget/layout/positioned.fill.md)
 - [Align](https://github.com/erlage/proton-framework/blob/main/doc/widget/layout/align.md)
 
 ### Gestures:

@@ -1,4 +1,4 @@
-## Positioned.filled widget
+## Positioned.fill widget
 
 Similar to Positioned widget but it takes up entire available space.
 
@@ -18,7 +18,7 @@ type PositionedProps = {
 Container({
   child: Stack({
     children: [
-      Positioned.filled({
+      Positioned.fill({
         child: Text("this takes up entire space"),
       }),
     ],

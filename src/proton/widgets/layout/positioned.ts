@@ -16,12 +16,12 @@ import {
 // prepare props
 
 type PositionedProps = SizeProps & PositionProps & OptionalMeasuringUnitsProps & SingleChildWidgetProp;
-type PositionedFilledProps = SingleChildWidgetProp;
+type PositionedFillProps = SingleChildWidgetProp;
 
 // user exposed
 
 type WidgetProps = WidgetFoundationProps & PositionedProps;
-type FilledWidgetProps = WidgetFoundationProps & PositionedFilledProps;
+type FillWidgetProps = WidgetFoundationProps & PositionedFillProps;
 
 // internal, for render object
 
@@ -52,7 +52,7 @@ export function Positioned(props: WidgetProps): Widget {
   };
 }
 
-Positioned.filled = function (props: FilledWidgetProps) {
+Positioned.fill = function (props: FillWidgetProps) {
   return {
     builder: (context: BuildableContext) =>
       new PositionedRenderObject({
