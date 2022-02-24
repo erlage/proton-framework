@@ -2,7 +2,7 @@
 
 A widget that positions its children relative to the edges of its box.
 
-### Props
+## Props
 
 ```typescript
 type StackProps = {
@@ -12,7 +12,7 @@ type StackProps = {
 };
 ```
 
-### Usage
+## Usage
 
 ```typescript
 Container({

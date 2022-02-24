@@ -75,17 +75,24 @@ One of the most important prop is `key` prop and is accepted by every widget i.e
 
 ## Supported widgets
 
-### Function based:
+### Elements:
 
 - [Text](https://github.com/erlage/proton-framework/blob/main/doc/widget/text.md)
-- [Container](https://github.com/erlage/proton-framework/blob/main/doc/widget/container.md)
-- [GestureDetector](https://github.com/erlage/proton-framework/blob/main/doc/widget/gesture_detector.md)
-- [Stack](https://github.com/erlage/proton-framework/blob/main/doc/widget/stack.md)
 
-### Class based:
+### Layout:
+
+- [Container](https://github.com/erlage/proton-framework/blob/main/doc/widget/container.md)
+- [Stack](https://github.com/erlage/proton-framework/blob/main/doc/widget/stack.md)
+- [Align](https://github.com/erlage/proton-framework/blob/main/doc/widget/align.md)
+
+### Gestures:
+
+- [GestureDetector](https://github.com/erlage/proton-framework/blob/main/doc/widget/gesture_detector.md)
+
+### Main:
 
 - [ProtonApp](https://github.com/erlage/proton-framework/blob/main/doc/widget/proton_app.md)
 - [StatelessWidget](https://github.com/erlage/proton-framework/blob/main/doc/widget/stateless_widget.md)
 - [StatefulWidget](https://github.com/erlage/proton-framework/blob/main/doc/widget/stateful_widget.md)
 
-And that's pretty much it.
+... working on more

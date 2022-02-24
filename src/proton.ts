@@ -9,3 +9,4 @@ export { Text } from "./proton/widgets/elements/text.js";
 export { Container } from "./proton/widgets/layout/container.js";
 export { GestureDetector, HitTestBehaviour } from "./proton/widgets/gestures/gesture_detector.js";
 export { Stack } from "./proton/widgets/layout/stack.js";
+export { Align, Alignment } from "./proton/widgets/layout/align.js";

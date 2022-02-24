@@ -2,7 +2,7 @@
 
 GestureDetector allow you to respond to user's interactions on screen.
 
-### Props
+## Props
 
 ```typescript
 type GestureDetectorProps = {
@@ -14,7 +14,7 @@ type GestureDetectorProps = {
 };
 ```
 
-### Supported behaviours:
+## Supported behaviours:
 
 - `HitTestBehaviour.opaque`: receive events and prevent child gesture detectors from receiving events.
 - `HitTestBehaviour.translucent`: all of the detectors that are hit will receive events.
@@ -24,7 +24,7 @@ type GestureDetectorProps = {
 
 - `child`: widget to wrap.
 
-### Usage
+## Usage
 
 - Example using `onTap`:
 

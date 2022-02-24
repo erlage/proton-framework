@@ -2,7 +2,7 @@
 
 HTML's div abstraction.
 
-### Props
+## Props
 
 ```typescript
 type ContainerProps = {
@@ -15,7 +15,7 @@ type ContainerProps = {
 };
 ```
 
-### Usage
+## Usage
 
 ```typescript
 Container({

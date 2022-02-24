@@ -2,7 +2,7 @@
 
 This widget is a bridge between DOM and framework. It mounts itself to a DOM element and act as a root widget in your app.
 
-### Props
+## Props
 
 ```typescript
 type ProtonAppProps = {
@@ -16,7 +16,7 @@ type ProtonAppProps = {
 - `home`: app's contents.
 - `target`: id of one of the element in DOM where you want your app to mount.
 
-### Usage
+## Usage
 
 ```typescript
 new ProtonApp({

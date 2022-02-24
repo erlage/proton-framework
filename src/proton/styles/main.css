@@ -15,6 +15,7 @@ body {
 [data-wtype="GestureDetector"],
 [data-wtype="Container"],
 [data-wtype="Stack"],
+[data-wtype="Align"],
 [data-wtype="Text"] {
     all: unset;
 }
@@ -43,4 +44,29 @@ body {
 [data-wtype="Stack"]>div,
 [data-wtype="Stack"]>span {
     position: absolute;
+}
+
+
+/**
+   * Align
+   */
+
+.p-align-top-right {
+    top: 0;
+    right: 0;
+}
+
+.p-align-top-left {
+    top: 0;
+    left: 0;
+}
+
+.p-align-bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.p-align-bottom-left {
+    bottom: 0;
+    left: 0;
 }
