@@ -1,6 +1,5 @@
 import { Framework } from "./framework.js";
-import { BuildContext } from "../../proton.js";
-import { WidgetRenderProps, WidgetStyleProps } from "./types.js";
+import { BuildContext, WidgetRenderProps, WidgetStyleProps } from "./types.js";
 
 export abstract class RenderObject {
   context: BuildContext;
