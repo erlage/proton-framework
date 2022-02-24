@@ -4,6 +4,9 @@ import { Painter } from "../../core/painter.js";
 import { RenderObject } from "../../core/render_object.js";
 import { Widget, BuildContext, ParentKeyProp, BuildableContext, WidgetFoundationProps } from "../../core/types.js";
 
+import "../../styles/include/normalize.css";
+import "../../styles/main.css";
+
 type AppProps = ParentKeyProp & {
   widgetType: string;
   widgetDomTag: DomTag;

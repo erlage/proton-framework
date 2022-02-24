@@ -24,7 +24,7 @@ export function Container(props: WidgetProps): Widget {
         parentKey: context.parentKey,
 
         widgetType: Container.name,
-        widgetDomTag: DomTag.div,
+        widgetDomTag: DomTag.span,
 
         class: props.class,
         classes: props.classes,
