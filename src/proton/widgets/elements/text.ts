@@ -45,7 +45,7 @@ class TextRenderObject extends RenderObject {
   }
 
   render(painter: Painter) {
-    painter.domNode.className = (this.props.class ?? "") + " " + this.props.classes?.join(" ");
+    painter.domNode.className = (this.props.class ?? "") + " proton-text " + (this.props.classes?.join(" ") ?? "");
 
     if (undefined !== this.props.isHtml && this.props.isHtml) {
       painter.domNode.innerHTML = this.props.text;
