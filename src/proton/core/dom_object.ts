@@ -29,6 +29,9 @@ export class DomObject {
   }
 
   parent() {
+
+    // we can't use node.parentElement here cus root widget's parent can be null
+
     let parent = document.getElementById(this.context.parentKey);
 
     if (undefined == parent) {

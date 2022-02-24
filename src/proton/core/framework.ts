@@ -32,21 +32,20 @@ export class Framework {
 
     renderObjects = objects instanceof Array ? objects : [objects];
 
-    let flagSingleObject = true;
+    let flagIsSingleChild = true; // assume widget is single and has no siblings
+
     for (let renderObject of renderObjects) {
-      if (flagSingleObject) {
+      if (flagIsSingleChild) {
         if (this.rebuild(renderObject.context.key)) {
           return;
         }
       }
 
       console.log(
-        `Build ${flagSingleObject ? "" : "sibling"}: ${renderObject.context.widgetType} #${renderObject.context.key}`,
+        `Build ${flagIsSingleChild ? "" : "sibling"}: ${renderObject.context.widgetType} #${renderObject.context.key}`,
       );
 
       this.registerRenderObject(renderObject);
-
-      // create or reuse previously mounted dom element
 
       let domObject = new DomObject({
         key: renderObject.context.key,
@@ -57,9 +56,9 @@ export class Framework {
 
       this.registerDomObject(domObject);
 
-      // dispose target's contents
+      // dispose inner contents
 
-      if (flagSingleObject) {
+      if (flagIsSingleChild) {
         this.disposeDomNodes(domObject.parent(), true);
       }
 
@@ -79,7 +78,9 @@ export class Framework {
 
       renderObject.render(domObject.domNode);
 
-      flagSingleObject = false;
+      // turn off isSingle flag
+      // if there are more widgets, loop will iterate and build them as siblings
+      flagIsSingleChild = false;
     }
   }
 
