@@ -60,14 +60,6 @@ class AppWidgetRenderObject extends RenderObject {
     this.props.child = widget;
   }
 
-  widgetType() {
-    return this.props.widgetType;
-  }
-
-  widgetDomNodeTag() {
-    return;
-  }
-
   render(domNode: HTMLElement) {
     if (null == domNode.parentElement) {
       throw "Unable to locate target element in dom";

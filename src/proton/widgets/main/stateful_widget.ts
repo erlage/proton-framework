@@ -47,7 +47,7 @@ export abstract class StatefulWidget implements Widget {
 
   setState(closure?: CallableFunction) {
     if (undefined == this.renderObject) {
-      throw "setState() called while initState() was not completed.";
+      throw "setState() called during initState().";
     }
     if (this.isRebuilding) {
       throw "setState() called while widget was building. Usually happens when you call setState() in build()";
@@ -86,7 +86,7 @@ class StatefulWidgetRenderObject extends RenderObject {
 
   render(domNode: HTMLElement) {
     if (undefined == this.props.child) {
-      throw "Render Object must set child before dispatching render call.";
+      throw "Render Object must set child widget to render before dispatching render call.";
     }
 
     new Painter(this.context, domNode).renderSingleWidget(this.props.child);
