@@ -19,6 +19,7 @@ body {
 [data-wtype="Positioned"],
 [data-wtype="Text"] {
     all: unset;
+    overflow: hidden;
 }
 
 
