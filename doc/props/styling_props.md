@@ -5,7 +5,7 @@ You can directly pass CSS classes to some widgets. Two CSS specific props are:
 1. `class: string`
 2. `classes: string[]`
 
-## Usage
+### Usage
 
 - Adding a single CSS class using `class` prop:
 

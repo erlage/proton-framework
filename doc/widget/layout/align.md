@@ -2,7 +2,7 @@
 
 A widget that aligns its child.
 
-## Props
+### Props
 
 ```typescript
 type AlignProps = {
@@ -14,14 +14,14 @@ type AlignProps = {
 };
 ```
 
-## Supported alignments:
+### Supported alignments:
 
 - `Alignment.topLeft`
 - `Alignment.topRight`
 - `Alignment.bottomLeft`
 - `Alignment.bottomRight`
 
-## Usage
+### Usage
 
 ```typescript
 Container({

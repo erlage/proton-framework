@@ -2,7 +2,7 @@
 
 A stateless widget is a widget that can be used to describe static user interface.
 
-## Props
+### Props
 
 ```typescript
 type StatelessWidgetProps = {
@@ -10,7 +10,7 @@ type StatelessWidgetProps = {
 };
 ```
 
-## Usage
+### Usage
 
 ```typescript
 class MyWidget extends StatelessWidget {

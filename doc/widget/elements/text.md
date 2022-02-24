@@ -2,7 +2,7 @@
 
 Text widget displays literal string values on screen.
 
-## Props
+### Props
 
 ```typescript
 type TextProps = {
@@ -17,7 +17,7 @@ type TextProps = {
 };
 ```
 
-## Usage
+### Usage
 
 - Examples
 

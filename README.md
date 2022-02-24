@@ -69,30 +69,34 @@ Let's talk more about Widgets in Proton,
 
 Each widget accept different set of properties(params, props, whatever).
 
-Some widgets accept CSS specific props that can be used to style them. You can read more about them [here](https://github.com/erlage/proton-framework/blob/main/doc/props/styling_props.md).
+1. Widget's key property is one of the most important prop. Internally `key` is used as widget indentity for lookups on rebuilds. Therefore it must uniquely identifies a widget in your entire app. For that reason, it's made optional and framework will take care of generating it for you. However you can set it if you want just make sure to keep it unique app-wide.
 
-One of the most important prop is `key` prop and is accepted by every widget i.e you can set `key` prop on any widget. Internally `key` is used as widget indentity and hence it should be unique and must not match with any other widget's `key` no matter where your widget is. If not provided, Proton generate it for you.
+2. **Styling props** are CSS specific props which can be used to directly apply CSS rules on a widget... [read more](https://github.com/erlage/proton-framework/blob/main/doc/props/styling_props.md).
 
-## Supported widgets
+3. **Layout props** deals with Widget's layout. Widgets that accept props such as width-height also accept special props which can be used to alter the default way framework measure provided values... [read more](https://github.com/erlage/proton-framework/blob/main/doc/props/layout_props.md).
+
+## Widgets index
 
 ### Elements:
 
-- [Text](https://github.com/erlage/proton-framework/blob/main/doc/widget/text.md)
+- [Text](https://github.com/erlage/proton-framework/blob/main/doc/widget/elements/text.md)
 
 ### Layout:
 
-- [Container](https://github.com/erlage/proton-framework/blob/main/doc/widget/container.md)
-- [Stack](https://github.com/erlage/proton-framework/blob/main/doc/widget/stack.md)
-- [Align](https://github.com/erlage/proton-framework/blob/main/doc/widget/align.md)
+- [Container](https://github.com/erlage/proton-framework/blob/main/doc/widget/layout/container.md)
+- [Stack](https://github.com/erlage/proton-framework/blob/main/doc/widget/layout/stack.md)
+- [Positioned](https://github.com/erlage/proton-framework/blob/main/doc/widget/layout/positioned.md)
+  - [Positioned.filled](https://github.com/erlage/proton-framework/blob/main/doc/widget/layout/positioned.filled.md)
+- [Align](https://github.com/erlage/proton-framework/blob/main/doc/widget/layout/align.md)
 
 ### Gestures:
 
-- [GestureDetector](https://github.com/erlage/proton-framework/blob/main/doc/widget/gesture_detector.md)
+- [GestureDetector](https://github.com/erlage/proton-framework/blob/main/doc/widget/gestures/gesture_detector.md)
 
 ### Main:
 
-- [ProtonApp](https://github.com/erlage/proton-framework/blob/main/doc/widget/proton_app.md)
-- [StatelessWidget](https://github.com/erlage/proton-framework/blob/main/doc/widget/stateless_widget.md)
-- [StatefulWidget](https://github.com/erlage/proton-framework/blob/main/doc/widget/stateful_widget.md)
+- [ProtonApp](https://github.com/erlage/proton-framework/blob/main/doc/widget/main/proton_app.md)
+- [StatelessWidget](https://github.com/erlage/proton-framework/blob/main/doc/widget/main/stateless_widget.md)
+- [StatefulWidget](https://github.com/erlage/proton-framework/blob/main/doc/widget/main/stateful_widget.md)
 
 ... working on more
