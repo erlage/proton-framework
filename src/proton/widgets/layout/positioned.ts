@@ -11,12 +11,13 @@ import {
   Widget,
   WidgetFoundationProps,
   WidgetRenderProps,
+  OptionalPositioningUnitProp,
 } from "../../core/types.js";
 
 // prepare props
 
 type PositionedProps = SizeProps & PositionProps & OptionalMeasuringUnitsProps & SingleChildWidgetProp;
-type PositionedFillProps = SingleChildWidgetProp;
+type PositionedFillProps = PositionProps & OptionalPositioningUnitProp & SingleChildWidgetProp;
 
 // user exposed
 
@@ -66,7 +67,11 @@ Positioned.fill = function (props: FillWidgetProps) {
         width: 100,
         height: 100,
 
-        positioningUnit: MeasuringUnit.pixel,
+        positioningUnit: props.positioningUnit ?? MeasuringUnit.pixel,
+        top: props.top,
+        bottom: props.bottom,
+        left: props.left,
+        right: props.right,
 
         child: props.child,
       }),
