@@ -6,7 +6,6 @@ import {
   ChildWidgetProp,
   MeasuringUnitsProps,
   OptionalMeasuringUnitsProps,
-  OptionalPositioningUnitProp,
   PositionProps,
   SizeProps,
   Widget,
@@ -17,7 +16,7 @@ import {
 // prepare props
 
 type PositionedProps = SizeProps & PositionProps & OptionalMeasuringUnitsProps & ChildWidgetProp;
-type PositionedFilledProps = PositionProps & OptionalPositioningUnitProp & ChildWidgetProp;
+type PositionedFilledProps = ChildWidgetProp;
 
 // user exposed
 
@@ -67,11 +66,7 @@ Positioned.filled = function (props: FilledWidgetProps) {
         width: 100,
         height: 100,
 
-        positioningUnit: props.positioningUnit ?? MeasuringUnit.pixel,
-        top: props.top,
-        bottom: props.bottom,
-        left: props.left,
-        right: props.right,
+        positioningUnit: MeasuringUnit.pixel,
 
         child: props.child,
       }),
