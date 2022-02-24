@@ -14,15 +14,15 @@ type GestureDetectorProps = {
 };
 ```
 
+- `onTap`: callable function that'll be fired when user taps on widget.
+
+- `child`: widget to wrap.
+
 ## Supported behaviours:
 
 - `HitTestBehaviour.opaque`: receive events and prevent child gesture detectors from receiving events.
 - `HitTestBehaviour.translucent`: all of the detectors that are hit will receive events.
 - (default) `HitTestBehaviour.deferToChild`: child gesture detectors will receive events and won't let them propagate to parents.
-
-- `onTap`: callable function that'll be fired when user taps on widget.
-
-- `child`: widget to wrap.
 
 ## Usage
 

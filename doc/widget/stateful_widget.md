@@ -50,7 +50,7 @@ type StatelessWidgetProps = {
   class MyStatefulWidget extends StatefulWidget {
     private isClicked = false;
 
-    init() {
+    initState() {
       console.log("widget is ready");
     }
 
