@@ -1,24 +1,46 @@
 html,
-body,
-
-/**
-   * root container
-   */
-
-[data-wtype="Target"] {
+body {
     width: 100%;
     height: 100%;
 }
 
 
 /**
-   * reset widget default display properties
+   * reset styles for wigets that otherwise might inherit defaults
+   * from their corresponding HTML tag in-use
    */
 
 [data-wtype="StatefulWidget"],
 [data-wtype="StatelessWidget"],
 [data-wtype="GestureDetector"],
 [data-wtype="Container"],
+[data-wtype="Stack"],
 [data-wtype="Text"] {
     all: unset;
+}
+
+
+/**
+   * widgets that should take as much space as possible
+   */
+
+[data-wtype="Target"],
+[data-wtype="Stack"] {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+
+/**
+   * Stack
+   */
+
+[data-wtype="Stack"] {
+    position: relative;
+}
+
+[data-wtype="Stack"]>div,
+[data-wtype="Stack"]>span {
+    position: absolute;
 }

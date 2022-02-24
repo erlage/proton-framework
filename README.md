@@ -6,15 +6,11 @@ To begin, let's take a look at a StatelessWidget
 
 ```typescript
 class HomePage extends StatelessWidget {
-
   build(context) {
-
     return GestureDetector({
-
       child: Text("Hello world!"),
 
       onTap: () => log("just got a click!"),
-
     });
   }
 }
@@ -84,6 +80,7 @@ One of the most important prop is `key` prop and is accepted by every widget i.e
 - [Text](https://github.com/erlage/proton-framework/blob/main/doc/widget/text.md)
 - [Container](https://github.com/erlage/proton-framework/blob/main/doc/widget/container.md)
 - [GestureDetector](https://github.com/erlage/proton-framework/blob/main/doc/widget/gesture_detector.md)
+- [Stack](https://github.com/erlage/proton-framework/blob/main/doc/widget/stack.md)
 
 ### Class based:
 
