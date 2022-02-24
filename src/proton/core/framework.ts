@@ -25,7 +25,7 @@ export class Framework {
   static build(objects: RenderObject | RenderObject[]) {
     if (!this.isInit) {
       throw `Framework not initialized.
-      If you're building your own AppWidget impl make sure call Framework.init().`;
+      If you're building your own AppWidget implementation, make sure to call Framework.init().`;
     }
 
     let renderObjects: RenderObject[];
@@ -47,12 +47,7 @@ export class Framework {
 
       this.registerRenderObject(renderObject);
 
-      let domObject = new DomObject({
-        key: renderObject.context.key,
-        parentKey: renderObject.context.parentKey,
-        widgetType: renderObject.context.widgetType,
-        widgetDomTag: renderObject.context.widgetDomTag,
-      });
+      let domObject = new DomObject(renderObject.context);
 
       this.registerDomObject(domObject);
 
