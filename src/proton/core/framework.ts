@@ -1,4 +1,3 @@
-import { Painter } from "./painter.js";
 import { DomObject } from "./dom_object.js";
 import { RenderObject } from "./render_object.js";
 
@@ -78,7 +77,7 @@ export class Framework {
 
       // lifecycle hook, paint childs contents
 
-      renderObject.render(new Painter(domObject));
+      renderObject.render(domObject.domNode);
 
       flagSingleObject = false;
     }
@@ -124,7 +123,7 @@ export class Framework {
 
     console.log(`Rebuild: type: ${renderObject.context.widgetType} key: ${renderObject.context.key}`);
 
-    renderObject.render(new Painter(domObject));
+    renderObject.render(domObject.domNode);
 
     return true;
   }

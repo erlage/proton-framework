@@ -1,5 +1,4 @@
 import { DomTag } from "../../core/enums.js";
-import { Painter } from "../../core/painter.js";
 import { RenderObject } from "../../core/render_object.js";
 import { BuildableContext, Widget, WidgetFoundationProps, WidgetStyleProps } from "../../core/types.js";
 
@@ -44,15 +43,15 @@ class TextRenderObject extends RenderObject {
     return DomTag.span;
   }
 
-  render(painter: Painter) {
-    painter.domNode.className = (this.props.class ?? "") + " proton-text " + (this.props.classes?.join(" ") ?? "");
+  render(domNode: HTMLElement) {
+    domNode.className = (this.props.class ?? "") + " p-text " + (this.props.classes?.join(" ") ?? "");
 
     if (undefined !== this.props.isHtml && this.props.isHtml) {
-      painter.domNode.innerHTML = this.props.text;
+      domNode.innerHTML = this.props.text;
 
       return;
     }
 
-    painter.domNode.innerText = this.props.text;
+    domNode.innerText = this.props.text;
   }
 }

@@ -1,5 +1,4 @@
 import { DomTag } from "./enums.js";
-import { Painter } from "./painter.js";
 import { Framework } from "./framework.js";
 import { BuildContext } from "../../proton.js";
 import { BuildableContext } from "./types.js";
@@ -22,7 +21,7 @@ export abstract class RenderObject {
 
   protected abstract widgetDomNodeTag(): DomTag;
 
-  abstract render(painter: Painter): void;
+  abstract render(domNode: HTMLElement): void;
 
   beforeDomNodeMount(): void {}
 

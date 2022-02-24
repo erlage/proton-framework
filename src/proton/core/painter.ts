@@ -1,25 +1,19 @@
-import { DomObject } from "./dom_object.js";
 import { Framework } from "./framework.js";
-import { StatefulWidget } from "../../proton.js";
-import { ParentKeyProp, Widget } from "./types.js";
+import { BuildContext, ParentKeyProp, Widget } from "./types.js";
 
 export class Painter {
-  private domObject: DomObject;
+  context: BuildContext;
   domNode: HTMLElement;
 
-  constructor(domObject: DomObject) {
-    this.domObject = domObject;
-    this.domNode = this.domObject.domNode;
-
-    if (StatefulWidget.name == this.domObject.context.widgetType) {
-      this.incrementBuildCount();
-    }
+  constructor(context: BuildContext, domNode: HTMLElement) {
+    this.context = context;
+    this.domNode = domNode;
   }
 
   renderSingleWidget(widget: Widget) {
     Framework.build(
       widget.builder({
-        parentKey: this.domObject.context.key,
+        parentKey: this.context.key,
       }),
     );
   }
@@ -39,7 +33,7 @@ export class Painter {
     };
 
     for (let child of widgets) {
-      widgetsToRenderProps.push(widgetPropBuilder(this.domObject.context.key, child));
+      widgetsToRenderProps.push(widgetPropBuilder(this.context.key, child));
     }
 
     // i know we can do above process in one map
@@ -52,14 +46,5 @@ export class Painter {
         }),
       ),
     );
-  }
-
-  incrementBuildCount() {
-    let count = 0;
-    if (undefined != this.domObject.domNode.dataset.wbc) {
-      count = parseInt(this.domObject.domNode.dataset.wbc);
-    }
-
-    this.domObject.domNode.dataset.wbc = (count + 1).toString();
   }
 }

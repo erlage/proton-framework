@@ -60,16 +60,16 @@ class GestureDetectorObject extends RenderObject {
     return DomTag.span;
   }
 
-  render(painter: Painter) {
-    painter.domNode.style.all = "unset";
+  render(domNode: HTMLElement) {
+    domNode.style.all = "unset";
 
-    painter.domNode.addEventListener(
+    domNode.addEventListener(
       "click",
       (event: MouseEvent) => this.handleOnTap(event),
       this.props.behaviour == HitTestBehaviour.opaque,
     );
 
-    painter.renderSingleWidget(this.props.child);
+    new Painter(this.context, domNode).renderSingleWidget(this.props.child);
   }
 
   handleOnTap(event: MouseEvent) {

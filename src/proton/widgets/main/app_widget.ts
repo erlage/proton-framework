@@ -2,7 +2,14 @@ import { DomTag } from "../../core/enums.js";
 import { Framework } from "../../core/framework.js";
 import { Painter } from "../../core/painter.js";
 import { RenderObject } from "../../core/render_object.js";
-import { BuildableContext, BuildContext, ParentKeyProp, Widget, WidgetFoundationProps } from "../../core/types.js";
+import {
+  Widget,
+  BuildContext,
+  ParentKeyProp,
+  BuildableContext,
+  WidgetStyleProps,
+  WidgetFoundationProps,
+} from "../../core/types.js";
 
 type AppProps = ParentKeyProp & {
   child: Widget;
@@ -60,9 +67,7 @@ class AppWidgetRenderObject extends RenderObject {
     return DomTag.span;
   }
 
-  render(painter: Painter) {
-    painter.domNode.style.all = "unset";
-
-    painter.renderSingleWidget(this.props.child);
+  render(domNode: HTMLElement) {
+    new Painter(this.context, domNode).renderSingleWidget(this.props.child);
   }
 }

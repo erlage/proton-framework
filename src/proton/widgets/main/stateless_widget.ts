@@ -49,13 +49,13 @@ class StatelessWidgetRenderObject extends RenderObject {
     return DomTag.span;
   }
 
-  render(painter: Painter) {
+  render(domNode: HTMLElement) {
     if (undefined == this.props.child) {
       throw "Render Object must set child before dispatching render call.";
     }
 
-    painter.domNode.style.all = "unset";
+    domNode.style.all = "unset";
 
-    painter.renderSingleWidget(this.props.child);
+    new Painter(this.context, domNode).renderSingleWidget(this.props.child);
   }
 }
