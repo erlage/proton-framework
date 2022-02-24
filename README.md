@@ -60,9 +60,7 @@ To run this example, you've to install Proton.
     key: "proton-app",
     target: "root-div",
     home: Container({
-      child: Text({
-        text: "hello world",
-      }),
+      child: Text("Hello world!"),
     }),
   });
   ```
