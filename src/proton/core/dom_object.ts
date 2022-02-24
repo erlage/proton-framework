@@ -3,7 +3,6 @@ import { BuildContext } from "./types.js";
 
 export class DomObject {
   context: BuildContext;
-
   domNode: HTMLElement;
 
   constructor(props: BuildContext) {
