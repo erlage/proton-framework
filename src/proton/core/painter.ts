@@ -3,10 +3,6 @@ import { Framework } from "./framework.js";
 import { StatefulWidget } from "../../proton.js";
 import { ParentKeyProp, Widget } from "./types.js";
 
-type WidgetToRenderProp = ParentKeyProp & {
-  widget: Widget;
-};
-
 export class Painter {
   private domObject: DomObject;
   domNode: HTMLElement;
@@ -20,17 +16,37 @@ export class Painter {
     }
   }
 
-  renderSingleWidget(props: WidgetToRenderProp) {
+  renderSingleWidget(widget: Widget) {
     Framework.build(
-      props.widget.builder({
-        parentKey: props.parentKey,
+      widget.builder({
+        parentKey: this.domObject.context.key,
       }),
     );
   }
 
-  renderMultipleWidgets(widgetsProps: WidgetToRenderProp[]) {
+  renderMultipleWidgets(widgets: Widget[]) {
+    type WidgetRenderProps = ParentKeyProp & {
+      widget: Widget;
+    };
+
+    let widgetsToRenderProps: WidgetRenderProps[] = [];
+
+    let widgetPropBuilder = function (key: string, builder: Widget) {
+      return {
+        parentKey: key,
+        widget: builder,
+      };
+    };
+
+    for (let child of widgets) {
+      widgetsToRenderProps.push(widgetPropBuilder(this.domObject.context.key, child));
+    }
+
+    // i know we can do above process in one map
+    // but rn goal is to keep it clean and readable
+
     Framework.build(
-      widgetsProps.map((props) =>
+      widgetsToRenderProps.map((props) =>
         props.widget.builder({
           parentKey: props.parentKey,
         }),

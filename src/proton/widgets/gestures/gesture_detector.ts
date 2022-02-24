@@ -69,10 +69,7 @@ class GestureDetectorObject extends RenderObject {
       this.props.behaviour == HitTestBehaviour.opaque,
     );
 
-    painter.renderSingleWidget({
-      parentKey: this.context.key,
-      widget: this.props.child,
-    });
+    painter.renderSingleWidget(this.props.child);
   }
 
   handleOnTap(event: MouseEvent) {

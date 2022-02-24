@@ -45,9 +45,6 @@ class ContainerRenderObject extends RenderObject {
   render(painter: Painter) {
     painter.domNode.className = (this.props.class ?? "") + " " + this.props.classes?.join(" ");
 
-    painter.renderSingleWidget({
-      parentKey: this.context.key,
-      widget: this.props.child,
-    });
+    painter.renderSingleWidget(this.props.child);
   }
 }
