@@ -3,18 +3,17 @@ import { Painter } from "../../core/painter.js";
 import { RenderObject } from "../../core/render_object.js";
 import {
   BuildableContext,
+  SingleChildWidgetProp,
   Widget,
   WidgetFoundationProps,
   WidgetRenderProps,
   WidgetStyleProps,
 } from "../../core/types.js";
 
-type ContainerProps = {
-  child: Widget;
-};
+type ContainerProps = WidgetStyleProps & SingleChildWidgetProp;
 
-type WidgetProps = WidgetFoundationProps & WidgetStyleProps & ContainerProps;
-type RenderObjectProps = WidgetRenderProps & WidgetStyleProps & ContainerProps;
+type WidgetProps = WidgetFoundationProps & ContainerProps;
+type RenderObjectProps = WidgetRenderProps & ContainerProps;
 
 export function Container(props: WidgetProps): Widget {
   return {

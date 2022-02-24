@@ -3,18 +3,17 @@ import { Painter } from "../../core/painter.js";
 import { RenderObject } from "../../core/render_object.js";
 import {
   BuildableContext,
+  MultipleChildWidgetsProp,
   Widget,
   WidgetFoundationProps,
   WidgetRenderProps,
   WidgetStyleProps,
 } from "../../core/types.js";
 
-type StackProps = {
-  children: Widget[];
-};
+type StackProps = WidgetStyleProps & MultipleChildWidgetsProp;
 
-type WidgetProps = WidgetFoundationProps & WidgetStyleProps & StackProps;
-type RenderObjectProps = WidgetRenderProps & WidgetStyleProps & StackProps;
+type WidgetProps = WidgetFoundationProps & StackProps;
+type RenderObjectProps = WidgetRenderProps & StackProps;
 
 export function Stack(props: WidgetProps): Widget {
   return {

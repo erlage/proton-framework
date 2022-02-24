@@ -1,7 +1,14 @@
 import { DomTag } from "../../core/enums.js";
 import { Painter } from "../../core/painter.js";
 import { RenderObject } from "../../core/render_object.js";
-import { BuildableContext, Widget, WidgetFoundationProps, WidgetRenderProps } from "../../core/types.js";
+import {
+  AlignmentProp,
+  BuildableContext,
+  SingleChildWidgetProp,
+  Widget,
+  WidgetFoundationProps,
+  WidgetRenderProps,
+} from "../../core/types.js";
 
 export enum Alignment {
   topLeft,
@@ -10,10 +17,7 @@ export enum Alignment {
   bottomRight,
 }
 
-type AlignProps = {
-  alignment: Alignment;
-  child: Widget;
-};
+type AlignProps = AlignmentProp & SingleChildWidgetProp;
 
 type WidgetProps = WidgetFoundationProps & AlignProps;
 type RenderObjectProps = WidgetRenderProps & AlignProps;

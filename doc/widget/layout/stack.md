@@ -8,6 +8,9 @@ A widget that positions its children relative to the edges of its box.
 type StackProps = {
   key?: string;
 
+  class?: string;
+  classes?: string[];
+
   children: Widget[];
 };
 ```

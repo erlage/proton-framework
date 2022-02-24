@@ -3,7 +3,7 @@ import { Painter } from "../../core/painter.js";
 import { RenderObject } from "../../core/render_object.js";
 import {
   BuildableContext,
-  ChildWidgetProp,
+  SingleChildWidgetProp,
   MeasuringUnitsProps,
   OptionalMeasuringUnitsProps,
   PositionProps,
@@ -15,8 +15,8 @@ import {
 
 // prepare props
 
-type PositionedProps = SizeProps & PositionProps & OptionalMeasuringUnitsProps & ChildWidgetProp;
-type PositionedFilledProps = ChildWidgetProp;
+type PositionedProps = SizeProps & PositionProps & OptionalMeasuringUnitsProps & SingleChildWidgetProp;
+type PositionedFilledProps = SingleChildWidgetProp;
 
 // user exposed
 
@@ -25,7 +25,7 @@ type FilledWidgetProps = WidgetFoundationProps & PositionedFilledProps;
 
 // internal, for render object
 
-type RenderObjectProps = WidgetRenderProps & SizeProps & PositionProps & MeasuringUnitsProps & ChildWidgetProp;
+type RenderObjectProps = WidgetRenderProps & SizeProps & PositionProps & MeasuringUnitsProps & SingleChildWidgetProp;
 
 export function Positioned(props: WidgetProps): Widget {
   return {

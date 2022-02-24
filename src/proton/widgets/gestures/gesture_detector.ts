@@ -1,7 +1,15 @@
 import { DomTag } from "../../core/enums.js";
 import { Painter } from "../../core/painter.js";
 import { RenderObject } from "../../core/render_object.js";
-import { BuildableContext, Widget, WidgetDomTagProp, WidgetFoundationProps, WidgetTypeProp } from "../../core/types.js";
+import {
+  BuildableContext,
+  SingleChildWidgetProp,
+  Widget,
+  WidgetDomTagProp,
+  WidgetFoundationProps,
+  WidgetRenderProps,
+  WidgetTypeProp,
+} from "../../core/types.js";
 
 export enum HitTestBehaviour {
   /**
@@ -20,14 +28,13 @@ export enum HitTestBehaviour {
   translucent,
 }
 
-type GestureDetectorProps = {
-  child: Widget;
+type GestureDetectorProps = SingleChildWidgetProp & {
   onTap?: CallableFunction;
   behaviour?: HitTestBehaviour;
 };
 
 type WidgetProps = WidgetFoundationProps & GestureDetectorProps;
-type RenderObjectProps = BuildableContext & WidgetTypeProp & WidgetDomTagProp & GestureDetectorProps;
+type RenderObjectProps = WidgetRenderProps & GestureDetectorProps;
 
 export function GestureDetector(props: WidgetProps): Widget {
   return {

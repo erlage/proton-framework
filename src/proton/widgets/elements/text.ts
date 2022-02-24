@@ -8,13 +8,13 @@ import {
   WidgetStyleProps,
 } from "../../core/types.js";
 
-type TextProps = {
+type TextProps = WidgetStyleProps & {
   text: string;
   isHtml?: boolean;
 };
 
-type WidgetProps = WidgetFoundationProps & WidgetStyleProps & TextProps;
-type RenderObjectProps = WidgetRenderProps & WidgetStyleProps & TextProps;
+type WidgetProps = WidgetFoundationProps & TextProps;
+type RenderObjectProps = WidgetRenderProps & TextProps;
 
 export function Text(props: string | WidgetProps): Widget {
   return {

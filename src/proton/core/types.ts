@@ -1,3 +1,4 @@
+import { Alignment } from "../../proton.js";
 import { DomTag, MeasuringUnit } from "./enums.js";
 import { RenderObject } from "./render_object.js";
 
@@ -17,11 +18,19 @@ export type OptionalParentKeyProp = {
   parentKey?: string;
 };
 
-export type ChildWidgetProp = {
+export type SingleChildWidgetProp = {
   child: Widget;
 };
 
+export type MultipleChildWidgetsProp = {
+  children: Widget[];
+};
+
 // layout
+
+export type AlignmentProp = {
+  alignment: Alignment;
+};
 
 export type SizeProps = {
   width?: number;
