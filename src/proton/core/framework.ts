@@ -23,52 +23,65 @@ export class Framework {
     return this.monotonicId.toString() + "_" + Math.random().toString().substring(3);
   }
 
-  static build(renderObject: RenderObject) {
+  static build(objects: RenderObject | RenderObject[]) {
     if (!this.isInit) {
       throw `Framework not initialized.
       If you're building your own AppWidget impl make sure call Framework.init().`;
     }
 
-    // render(rebuild)
+    let renderObjects: RenderObject[];
 
-    if (this.rebuild(renderObject.context.key)) {
-      return;
+    renderObjects = objects instanceof Array ? objects : [objects];
+
+    let flagSingleObject = true;
+    for (let renderObject of renderObjects) {
+      if (flagSingleObject) {
+        if (this.rebuild(renderObject.context.key)) {
+          return;
+        }
+      }
+
+      console.log(
+        `Build ${flagSingleObject ? "" : "sibling"}: ${renderObject.context.widgetType} #${renderObject.context.key}`,
+      );
+
+      this.registerRenderObject(renderObject);
+
+      // create or reuse previously mounted dom element
+
+      let domObject = new DomObject({
+        key: renderObject.context.key,
+        parentKey: renderObject.context.parentKey,
+        widgetType: renderObject.context.widgetType,
+        widgetDomTag: renderObject.context.widgetDomTag,
+      });
+
+      this.registerDomObject(domObject);
+
+      // dispose target's contents
+
+      if (flagSingleObject) {
+        this.disposeDomNodes(domObject.parent(), true);
+      }
+
+      // lifecycle hook, dom node is about to mount
+
+      renderObject.beforeDomNodeMount();
+
+      // mount dom node
+
+      domObject.mount();
+
+      // lifecycle hook, dom node is mounted
+
+      renderObject.afterDomNodeMount();
+
+      // lifecycle hook, paint childs contents
+
+      renderObject.render(new Painter(domObject));
+
+      flagSingleObject = false;
     }
-
-    console.log(`Build: ${renderObject.context.widgetType} #${renderObject.context.key}`);
-
-    this.registerRenderObject(renderObject);
-
-    // create or reuse previously mounted dom element
-
-    let domObject = new DomObject({
-      key: renderObject.context.key,
-      parentKey: renderObject.context.parentKey,
-      widgetType: renderObject.context.widgetType,
-      widgetDomTag: renderObject.context.widgetDomTag,
-    });
-
-    this.registerDomObject(domObject);
-
-    // dispose target's contents
-
-    this.disposeDomNodes(domObject.parent(), true);
-
-    // lifecycle hook, dom node is about to mount
-
-    renderObject.beforeDomNodeMount();
-
-    // mount dom node
-
-    domObject.mount();
-
-    // lifecycle hook, dom node is mounted
-
-    renderObject.afterDomNodeMount();
-
-    // lifecycle hook, paint childs contents
-
-    renderObject.render(new Painter(domObject));
   }
 
   // internal

@@ -28,6 +28,16 @@ export class Painter {
     );
   }
 
+  renderMultipleWidgets(widgetsProps: WidgetToRenderProp[]) {
+    Framework.build(
+      widgetsProps.map((props) =>
+        props.widget.builder({
+          parentKey: props.parentKey,
+        }),
+      ),
+    );
+  }
+
   incrementBuildCount() {
     let count = 0;
     if (undefined != this.domObject.domNode.dataset.wbc) {
