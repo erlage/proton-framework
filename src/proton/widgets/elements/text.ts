@@ -15,7 +15,7 @@ export function Text(props: string | WidgetProps): Widget {
   return {
     builder: (context: BuildableContext) =>
       new TextRenderObject({
-        key: typeof props === "string" ? undefined : props.key!,
+        key: typeof props === "string" ? undefined : props.key,
         parentKey: context.parentKey,
 
         class: typeof props === "string" ? undefined : props.class,

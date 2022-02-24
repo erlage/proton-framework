@@ -93,6 +93,6 @@ class GestureDetectorObject extends RenderObject {
         break;
     }
 
-    this.props.onTap!();
+    this.props.onTap();
   }
 }

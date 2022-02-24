@@ -80,7 +80,11 @@ export class Framework {
       return false;
     }
 
-    let domObject = this.findDomObject(key)!;
+    let domObject = this.findDomObject(key);
+
+    if (undefined == domObject) {
+      throw "Something went wrong";
+    }
 
     /**
      * we'are directly disposing all child nodes and then rebuilding
@@ -146,10 +150,7 @@ export class Framework {
 
     this.unRegisterRenderObject(renderObject.context.key);
 
-    let domObject = this.findDomObject(renderObject.context.key);
-    if (undefined != domObject) {
-      this.unRegisterDomObject(domObject.context.key);
-    }
+    this.unRegisterDomObject(renderObject.context.key);
 
     // remove dom node
 

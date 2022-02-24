@@ -65,7 +65,7 @@ class AppWidgetRenderObject extends RenderObject {
 
     painter.renderSingleWidget({
       parentKey: this.context.key,
-      widget: this.props.child!,
+      widget: this.props.child,
     });
   }
 }

@@ -101,11 +101,15 @@ class StatefulWidgetRenderObject extends RenderObject {
   }
 
   render(painter: Painter) {
+    if (undefined == this.props.child) {
+      throw "Render Object must set child before dispatching render call.";
+    }
+
     painter.domNode.style.all = "unset";
 
     painter.renderSingleWidget({
       parentKey: this.context.key,
-      widget: this.props.child!,
+      widget: this.props.child,
     });
   }
 
