@@ -1,14 +1,5 @@
-import { DomTag } from "./enums.js";
+import { mapDomTag } from "./enums.js";
 import { BuildContext } from "./types.js";
-
-function mapDomTag(tag: DomTag) {
-  switch (tag) {
-    case DomTag.div:
-      return "div";
-    default:
-      return "span";
-  }
-}
 
 export class DomObject {
   context: BuildContext;
@@ -29,7 +20,6 @@ export class DomObject {
   }
 
   parent() {
-
     // we can't use node.parentElement here cus root widget's parent can be null
 
     let parent = document.getElementById(this.context.parentKey);
