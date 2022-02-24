@@ -1,7 +1,13 @@
 import { DomTag } from "../../core/enums.js";
 import { Painter } from "../../core/painter.js";
 import { RenderObject } from "../../core/render_object.js";
-import { BuildableContext, Widget, WidgetFoundationProps, WidgetRenderProps, WidgetStyleProps } from "../../core/types.js";
+import {
+  BuildableContext,
+  Widget,
+  WidgetFoundationProps,
+  WidgetRenderProps,
+  WidgetStyleProps,
+} from "../../core/types.js";
 
 type StackProps = {
   children: Widget[];
@@ -16,7 +22,6 @@ export function Stack(props: WidgetProps): Widget {
       new StackRenderObject({
         key: props.key,
         parentKey: context.parentKey,
-
 
         class: props.class,
         classes: props.classes,
@@ -36,14 +41,6 @@ class StackRenderObject extends RenderObject {
     super(props);
 
     this.props = props;
-  }
-
-  widgetType() {
-    return Stack.name;
-  }
-
-  widgetDomNodeTag() {
-    return DomTag.div;
   }
 
   render(domNode: HTMLElement) {
