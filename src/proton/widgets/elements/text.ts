@@ -1,6 +1,12 @@
 import { DomTag } from "../../core/enums.js";
 import { RenderObject } from "../../core/render_object.js";
-import { BuildableContext, Widget, WidgetFoundationProps, WidgetStyleProps } from "../../core/types.js";
+import {
+  BuildableContext,
+  Widget,
+  WidgetFoundationProps,
+  WidgetRenderProps,
+  WidgetStyleProps,
+} from "../../core/types.js";
 
 type TextProps = {
   text: string;
@@ -8,7 +14,7 @@ type TextProps = {
 };
 
 type WidgetProps = WidgetFoundationProps & WidgetStyleProps & TextProps;
-type RenderObjectProps = BuildableContext & WidgetStyleProps & TextProps;
+type RenderObjectProps = WidgetRenderProps & WidgetStyleProps & TextProps;
 
 export function Text(props: string | WidgetProps): Widget {
   return {
@@ -16,6 +22,9 @@ export function Text(props: string | WidgetProps): Widget {
       new TextRenderObject({
         key: typeof props === "string" ? undefined : props.key,
         parentKey: context.parentKey,
+
+        widgetType: Text.name,
+        widgetDomTag: DomTag.span,
 
         class: typeof props === "string" ? undefined : props.class,
         classes: typeof props === "string" ? undefined : props.classes,
@@ -35,16 +44,8 @@ class TextRenderObject extends RenderObject {
     this.props = props;
   }
 
-  widgetType() {
-    return Text.name;
-  }
-
-  widgetDomNodeTag() {
-    return DomTag.span;
-  }
-
   render(domNode: HTMLElement) {
-    domNode.className = (this.props.class ?? "") + " p-text " + (this.props.classes?.join(" ") ?? "");
+    this.setStyleClass(domNode, this.props);
 
     if (undefined !== this.props.isHtml && this.props.isHtml) {
       domNode.innerHTML = this.props.text;

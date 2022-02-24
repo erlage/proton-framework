@@ -1,7 +1,7 @@
 import { DomTag } from "../../core/enums.js";
 import { Painter } from "../../core/painter.js";
 import { RenderObject } from "../../core/render_object.js";
-import { BuildableContext, Widget, WidgetFoundationProps } from "../../core/types.js";
+import { BuildableContext, Widget, WidgetDomTagProp, WidgetFoundationProps, WidgetTypeProp } from "../../core/types.js";
 
 export enum HitTestBehaviour {
   /**
@@ -27,7 +27,7 @@ type GestureDetectorProps = {
 };
 
 type WidgetProps = WidgetFoundationProps & GestureDetectorProps;
-type RenderObjectProps = BuildableContext & GestureDetectorProps;
+type RenderObjectProps = BuildableContext & WidgetTypeProp & WidgetDomTagProp & GestureDetectorProps;
 
 export function GestureDetector(props: WidgetProps): Widget {
   return {
@@ -35,6 +35,9 @@ export function GestureDetector(props: WidgetProps): Widget {
       new GestureDetectorObject({
         key: props.key,
         parentKey: context.parentKey,
+
+        widgetType: GestureDetector.name,
+        widgetDomTag: DomTag.span,
 
         onTap: props.onTap,
         child: props.child,
@@ -52,17 +55,7 @@ class GestureDetectorObject extends RenderObject {
     this.props = props;
   }
 
-  widgetType() {
-    return GestureDetector.name;
-  }
-
-  widgetDomNodeTag() {
-    return DomTag.span;
-  }
-
   render(domNode: HTMLElement) {
-    domNode.style.all = "unset";
-
     domNode.addEventListener(
       "click",
       (event: MouseEvent) => this.handleOnTap(event),

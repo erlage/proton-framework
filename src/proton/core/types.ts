@@ -17,12 +17,6 @@ export type OptionalParentKeyProp = {
   parentKey?: string;
 };
 
-export type WidgetFoundationProps = OptionalKeyProp;
-
-export type BuildableContext = OptionalKeyProp & ParentKeyProp;
-
-export type BuildContext = KeyProp & ParentKeyProp & WidgetTypeProp & WidgetDomTagProp;
-
 export type WidgetTypeProp = {
   widgetType: string;
 };
@@ -34,6 +28,14 @@ export type WidgetStyleProps = {
   class?: string;
   classes?: string[];
 };
+
+export type BuildContext = KeyProp & ParentKeyProp & WidgetTypeProp & WidgetDomTagProp;
+
+export type BuildableContext = OptionalKeyProp & ParentKeyProp;
+
+export type WidgetFoundationProps = OptionalKeyProp;
+
+export type WidgetRenderProps = BuildableContext & WidgetTypeProp & WidgetDomTagProp;
 
 export type Widget = {
   builder(context: BuildableContext): RenderObject;

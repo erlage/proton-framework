@@ -1,4 +1,5 @@
 import { AppWidget } from "./app_widget.js";
+import { DomTag } from "../../core/enums.js";
 import { Widget, WidgetFoundationProps } from "../../core/types.js";
 
 type AppProps = WidgetFoundationProps & {
@@ -11,6 +12,9 @@ export class ProtonApp extends AppWidget {
     super({
       key: props.key,
       parentKey: props.target,
+
+      widgetType: ProtonApp.name,
+      widgetDomTag: DomTag.div,
 
       child: props.home,
     });

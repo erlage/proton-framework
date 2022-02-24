@@ -1,14 +1,20 @@
 import { DomTag } from "../../core/enums.js";
 import { Painter } from "../../core/painter.js";
 import { RenderObject } from "../../core/render_object.js";
-import { BuildableContext, Widget, WidgetFoundationProps, WidgetStyleProps } from "../../core/types.js";
+import {
+  BuildableContext,
+  Widget,
+  WidgetFoundationProps,
+  WidgetRenderProps,
+  WidgetStyleProps,
+} from "../../core/types.js";
 
 type ContainerProps = {
   child: Widget;
 };
 
 type WidgetProps = WidgetFoundationProps & WidgetStyleProps & ContainerProps;
-type RenderObjectProps = BuildableContext & WidgetStyleProps & ContainerProps;
+type RenderObjectProps = WidgetRenderProps & WidgetStyleProps & ContainerProps;
 
 export function Container(props: WidgetProps): Widget {
   return {
@@ -16,6 +22,9 @@ export function Container(props: WidgetProps): Widget {
       new ContainerRenderObject({
         key: props.key,
         parentKey: context.parentKey,
+
+        widgetType: Container.name,
+        widgetDomTag: DomTag.div,
 
         class: props.class,
         classes: props.classes,
@@ -34,16 +43,8 @@ class ContainerRenderObject extends RenderObject {
     this.props = props;
   }
 
-  widgetType() {
-    return Container.name;
-  }
-
-  widgetDomNodeTag() {
-    return DomTag.div;
-  }
-
   render(domNode: HTMLElement) {
-    domNode.className = (this.props.class ?? "") + " p-container " + (this.props.classes?.join(" ") ?? "");
+    this.setStyleClass(domNode, this.props);
 
     new Painter(this.context, domNode).renderSingleWidget(this.props.child);
   }

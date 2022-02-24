@@ -1,9 +1,9 @@
 import { DomTag } from "../../core/enums.js";
 import { Painter } from "../../core/painter.js";
 import { RenderObject } from "../../core/render_object.js";
-import { BuildableContext, BuildContext, Widget, WidgetFoundationProps } from "../../core/types.js";
+import { BuildableContext, BuildContext, Widget, WidgetFoundationProps, WidgetRenderProps } from "../../core/types.js";
 
-type RenderObjectProps = BuildableContext & {
+type RenderObjectProps = WidgetRenderProps & {
   child?: Widget;
 };
 
@@ -18,6 +18,9 @@ export abstract class StatelessWidget implements Widget {
     let renderObject = new StatelessWidgetRenderObject({
       key: this.props?.key,
       parentKey: context.parentKey,
+
+      widgetType: StatelessWidget.name,
+      widgetDomTag: DomTag.span,
     });
 
     renderObject.setChildWidget(this.build(renderObject.context));
@@ -41,20 +44,10 @@ class StatelessWidgetRenderObject extends RenderObject {
     this.props.child = widget;
   }
 
-  widgetType() {
-    return StatelessWidget.name;
-  }
-
-  widgetDomNodeTag() {
-    return DomTag.span;
-  }
-
   render(domNode: HTMLElement) {
     if (undefined == this.props.child) {
       throw "Render Object must set child before dispatching render call.";
     }
-
-    domNode.style.all = "unset";
 
     new Painter(this.context, domNode).renderSingleWidget(this.props.child);
   }

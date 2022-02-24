@@ -1,25 +1,19 @@
-import { DomTag } from "./enums.js";
 import { Framework } from "./framework.js";
 import { BuildContext } from "../../proton.js";
-import { BuildableContext } from "./types.js";
-
-type RenderObjectProps = BuildableContext;
+import { WidgetRenderProps, WidgetStyleProps } from "./types.js";
 
 export abstract class RenderObject {
   context: BuildContext;
 
-  constructor(props: RenderObjectProps) {
+  constructor(props: WidgetRenderProps) {
     this.context = {
       key: props.key ?? Framework.generateId(),
       parentKey: props.parentKey,
-      widgetType: this.widgetType(),
-      widgetDomTag: this.widgetDomNodeTag(),
+
+      widgetType: props.widgetType,
+      widgetDomTag: props.widgetDomTag,
     };
   }
-
-  protected abstract widgetType(): string;
-
-  protected abstract widgetDomNodeTag(): DomTag;
 
   abstract render(domNode: HTMLElement): void;
 
@@ -31,5 +25,9 @@ export abstract class RenderObject {
 
   rebuild() {
     Framework.build(this);
+  }
+
+  setStyleClass(domNode: HTMLElement, props: WidgetStyleProps) {
+    domNode.className = ((props.class ?? "") + " " + (props.classes?.join(" ") ?? "")).trim();
   }
 }
