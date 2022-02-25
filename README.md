@@ -1,9 +1,9 @@
-## Project is discontinued
-
-Just realised that choosing TypeScript was a bad decision:
-  - No named params, I tried implementing demo and it experience was awful.
-  - No named constructors, even thou I had emulated the behaviour using function's properties but it's not nice. 
-  - Typescript is great but its tooling isn't.
+>  Project Discontinued
+> 
+> Just realised that choosing TypeScript was a bad decision:
+>   - No named params, I tried implementing demo and it experience was awful.
+>   - No named constructors, even thou I had emulated the behaviour using function's properties but it's not nice. 
+>   - Typescript is great but its tooling isn't.
 
 ## Proton
 
