@@ -25,7 +25,7 @@ export class Framework {
     return this.monotonicId.toString() + "_" + Math.random().toString().substring(3);
   }
 
-  static build(renderObject: RenderObject, isSibling = false) {
+  static build(renderObject: RenderObject, append = false) {
     if (!this.isInit) {
       throw `Framework not initialized.
       If you're building your own AppWidget implementation, make sure to call Framework.init().`;
@@ -35,7 +35,7 @@ export class Framework {
       return;
     }
 
-    console.log(`Build ${isSibling ? "sibling" : ""}: ${renderObject.context.widgetType} #${renderObject.context.key}`);
+    console.log(`Build ${append ? "as Sibling" : ""}: ${renderObject.context.widgetType} #${renderObject.context.key}`);
 
     this.registerRenderObject(renderObject);
 
@@ -43,9 +43,9 @@ export class Framework {
 
     this.registerDomObject(domObject);
 
-    // dispose inner contents
+    // dispose inner contents if not appending
 
-    if (!isSibling) {
+    if (!append) {
       this.disposeDomNodes(domObject.parent(), true);
     }
 
