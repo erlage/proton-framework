@@ -17,6 +17,7 @@ body {
 [data-wtype="Stack"],
 [data-wtype="Align"],
 [data-wtype="Positioned"],
+[data-wtype="Overlay"],
 [data-wtype="OverlayEntry"],
 [data-wtype="Text"] {
     all: unset;
@@ -29,6 +30,7 @@ body {
    */
 
 [data-wtype="Target"],
+[data-wtype="Overlay"],
 [data-wtype="OverlayEntry"],
 [data-wtype="Stack"] {
     width: 100%;
@@ -41,6 +43,7 @@ body {
    * Widgets that exhibits overlaying behaviour
    */
 
+[data-wtype="Overlay"],
 [data-wtype="Stack"] {
     position: relative;
 }

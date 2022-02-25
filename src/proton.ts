@@ -14,4 +14,5 @@ export { GestureDetector, HitTestBehaviour } from "./proton/widgets/gestures/ges
 export { Stack } from "./proton/widgets/layout/stack.js";
 export { Align, Alignment } from "./proton/widgets/layout/align.js";
 export { Positioned } from "./proton/widgets/layout/positioned.js";
+export { Overlay } from "./proton/widgets/layout/overlay.js";
 export { OverlayEntry } from "./proton/widgets/layout/overlay_entry.js";
