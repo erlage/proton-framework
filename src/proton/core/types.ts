@@ -1,6 +1,7 @@
 import { Alignment } from "../../proton.js";
-import { DomTag, MeasuringUnit } from "./enums.js";
+import { DomObject } from "./dom_object.js";
 import { RenderObject } from "./render_object.js";
+import { DomTag, MeasuringUnit } from "./enums.js";
 
 export type KeyProp = {
   key: string;
@@ -86,4 +87,9 @@ export type WidgetRenderProps = BuildableContext & WidgetTypeProp & WidgetDomTag
 
 export type Widget = {
   builder(context: BuildableContext): RenderObject;
+};
+
+export type WidgetStateObjects = {
+  renderObject: RenderObject;
+  domObject: DomObject;
 };
