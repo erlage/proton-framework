@@ -1,3 +1,4 @@
+import { Constants } from "./constants.js";
 import { DomObject } from "./dom_object.js";
 import { RenderObject } from "./render_object.js";
 import { BuildContext, WidgetStateObjects } from "./types.js";
@@ -71,6 +72,12 @@ export class Framework {
   }
 
   static findAncestorOfType(wtype: string, context: BuildContext): WidgetStateObjects | null {
+    if (Constants.inBuildPhase == context.key) {
+      throw `Part of context are not ready for usage. 
+             This means that context is under construction and cannot be used. 
+             Contexts contruction completes after render object for a widget is built.`;
+    }
+
     let domNode = document.getElementById(context.key)?.closest("[data-wtype='" + wtype + "'") as HTMLElement;
 
     if (null == domNode) {
