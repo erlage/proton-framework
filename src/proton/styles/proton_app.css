@@ -7,3 +7,7 @@
     height: 100%;
     overflow: hidden;
 }
+
+.p-opaque {
+    background-color: white;
+}
