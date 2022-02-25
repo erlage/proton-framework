@@ -1,5 +1,6 @@
 import { DomObject } from "./dom_object.js";
 import { RenderObject } from "./render_object.js";
+import { BuildContext, WidgetStateObjects } from "./types.js";
 
 export class Framework {
   private static isInit = false;
@@ -67,6 +68,26 @@ export class Framework {
 
   static dispose(renderObject: RenderObject) {
     this.disposeDomNodes(this.findDomObject(renderObject.context.key)?.domNode ?? null, false);
+  }
+
+  static findAncestorOfType(wtype: string, context: BuildContext): WidgetStateObjects | null {
+    let domNode = document.getElementById(context.key)?.closest("[data-wtype='" + wtype + "'") as HTMLElement;
+
+    if (null == domNode) {
+      return null;
+    }
+
+    let renderObject = this.findRenderObject(domNode.id);
+    let domObject = this.findDomObject(domNode.id);
+
+    if (undefined == renderObject || undefined == domObject) {
+      return null;
+    }
+
+    return {
+      renderObject: renderObject,
+      domObject: domObject,
+    };
   }
 
   // internal
