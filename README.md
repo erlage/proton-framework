@@ -1,3 +1,10 @@
+## Project is discontinued
+
+Just realised that choosing TypeScript was a bad decision:
+  - No named params, I tried implementing demo and it experience was awful.
+  - No named constructors, even thou I had emulated the behaviour using function's properties but it's not nice. 
+  - Typescript is great but its tooling isn't.
+
 ## Proton
 
 Proton is frontend framework inspired from Flutter.
@@ -100,5 +107,3 @@ Each widget accept different set of properties(params, props, whatever).
 - [ProtonApp](https://github.com/erlage/proton-framework/blob/main/doc/widget/main/proton_app.md)
 - [StatelessWidget](https://github.com/erlage/proton-framework/blob/main/doc/widget/main/stateless_widget.md)
 - [StatefulWidget](https://github.com/erlage/proton-framework/blob/main/doc/widget/main/stateful_widget.md)
-
-... working on more
