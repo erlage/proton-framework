@@ -11,7 +11,9 @@ export default {
         dir: "dist",
     },
     plugins: [
-        typescript(),
+        typescript({
+            sourceMap: true,
+        }),
         postcss({
             extensions: [".css"],
             plugins: [
