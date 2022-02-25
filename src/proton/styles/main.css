@@ -48,6 +48,7 @@ body {
     position: relative;
 }
 
+[data-wtype="Align"],
 [data-wtype="OverlayEntry"],
 [data-wtype="Stack"]>div,
 [data-wtype="Stack"]>span {
