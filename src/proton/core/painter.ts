@@ -10,26 +10,26 @@ export class Painter {
     this.domNode = domNode;
   }
 
-  renderSingleWidget(widget: Widget) {
+  renderSingleWidget(widget: Widget, append = false) {
     Framework.build(
       widget.builder({
         parentKey: this.context.key,
       }),
+      append,
     );
   }
 
-  renderMultipleWidgets(widgets: Widget[]) {
-    let isSibling = false;
-
+  renderMultipleWidgets(widgets: Widget[], append = false) {
     for (let child of widgets) {
       Framework.build(
         child.builder({
           parentKey: this.context.key,
         }),
-        isSibling,
+        append,
       );
 
-      isSibling = true;
+      // we must append remaining widgets
+      append = true;
     }
   }
 }
