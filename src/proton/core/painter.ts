@@ -19,32 +19,17 @@ export class Painter {
   }
 
   renderMultipleWidgets(widgets: Widget[]) {
-    type WidgetRenderProps = ParentKeyProp & {
-      widget: Widget;
-    };
-
-    let widgetsToRenderProps: WidgetRenderProps[] = [];
-
-    let widgetPropBuilder = function (key: string, builder: Widget) {
-      return {
-        parentKey: key,
-        widget: builder,
-      };
-    };
+    let isSibling = false;
 
     for (let child of widgets) {
-      widgetsToRenderProps.push(widgetPropBuilder(this.context.key, child));
-    }
-
-    // i know we can do above process in one map
-    // but rn goal is to keep it clean and readable
-
-    Framework.build(
-      widgetsToRenderProps.map((props) =>
-        props.widget.builder({
-          parentKey: props.parentKey,
+      Framework.build(
+        child.builder({
+          parentKey: this.context.key,
         }),
-      ),
-    );
+        isSibling,
+      );
+
+      isSibling = true;
+    }
   }
 }

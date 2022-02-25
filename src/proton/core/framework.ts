@@ -22,61 +22,45 @@ export class Framework {
     return this.monotonicId.toString() + "_" + Math.random().toString().substring(3);
   }
 
-  static build(objects: RenderObject | RenderObject[]) {
+  static build(renderObject: RenderObject, isSibling = false) {
     if (!this.isInit) {
       throw `Framework not initialized.
       If you're building your own AppWidget implementation, make sure to call Framework.init().`;
     }
 
-    let renderObjects: RenderObject[];
-
-    renderObjects = objects instanceof Array ? objects : [objects];
-
-    let flagIsSingleChild = true; // assume widget is single and has no siblings
-
-    for (let renderObject of renderObjects) {
-      if (flagIsSingleChild) {
-        if (this.rebuild(renderObject.context.key)) {
-          return;
-        }
-      }
-
-      console.log(
-        `Build ${flagIsSingleChild ? "" : "sibling"}: ${renderObject.context.widgetType} #${renderObject.context.key}`,
-      );
-
-      this.registerRenderObject(renderObject);
-
-      let domObject = new DomObject(renderObject.context);
-
-      this.registerDomObject(domObject);
-
-      // dispose inner contents
-
-      if (flagIsSingleChild) {
-        this.disposeDomNodes(domObject.parent(), true);
-      }
-
-      // lifecycle hook, dom node is about to mount
-
-      renderObject.beforeDomNodeMount();
-
-      // mount dom node
-
-      domObject.mount();
-
-      // lifecycle hook, dom node is mounted
-
-      renderObject.afterDomNodeMount();
-
-      // lifecycle hook, paint childs contents
-
-      renderObject.render(domObject.domNode);
-
-      // turn off isSingle flag
-      // if there are more widgets, loop will iterate and build them as siblings
-      flagIsSingleChild = false;
+    if (this.rebuild(renderObject.context.key)) {
+      return;
     }
+
+    console.log(`Build ${isSibling ? "" : "sibling"}: ${renderObject.context.widgetType} #${renderObject.context.key}`);
+
+    this.registerRenderObject(renderObject);
+
+    let domObject = new DomObject(renderObject.context);
+
+    this.registerDomObject(domObject);
+
+    // dispose inner contents
+
+    if (!isSibling) {
+      this.disposeDomNodes(domObject.parent(), true);
+    }
+
+    // lifecycle hook, dom node is about to mount
+
+    renderObject.beforeDomNodeMount();
+
+    // mount dom node
+
+    domObject.mount();
+
+    // lifecycle hook, dom node is mounted
+
+    renderObject.afterDomNodeMount();
+
+    // lifecycle hook, paint childs contents
+
+    renderObject.render(domObject.domNode);
   }
 
   // internal
