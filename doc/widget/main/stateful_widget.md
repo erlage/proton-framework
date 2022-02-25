@@ -28,7 +28,7 @@ type StatelessWidgetProps = {
   class MyStatefulWidget extends StatefulWidget {
     private isClicked = false;
 
-    build() {
+    build(context: BuildContext) {
       return GestureDetector({
         child: Text(this.isClicked ? "clicked" : "click me!"),
 
