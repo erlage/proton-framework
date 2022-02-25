@@ -1,5 +1,5 @@
 import { Framework } from "./framework.js";
-import { BuildContext, ParentKeyProp, Widget } from "./types.js";
+import { BuildContext, Widget } from "./types.js";
 
 export class Painter {
   context: BuildContext;
