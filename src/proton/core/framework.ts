@@ -63,6 +63,10 @@ export class Framework {
     renderObject.render(domObject.domNode);
   }
 
+  static dispose(renderObject: RenderObject) {
+    this.disposeDomNodes(this.findDomObject(renderObject.context.key)?.domNode ?? null, false);
+  }
+
   // internal
 
   private static rebuild(key: string) {
