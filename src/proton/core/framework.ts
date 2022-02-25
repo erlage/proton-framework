@@ -135,6 +135,14 @@ export class Framework {
     return true;
   }
 
+  static findRenderObject(key: string) {
+    return this.renderedObjects.get(key);
+  }
+
+  static findDomObject(key: string) {
+    return this.domObjects.get(key);
+  }
+
   /**
    * @param preserveTarget if on, domNode itself wont be removed
    */
@@ -174,14 +182,6 @@ export class Framework {
     // remove dom node
 
     domNode.remove();
-  }
-
-  private static findRenderObject(key: string) {
-    return this.renderedObjects.get(key);
-  }
-
-  private static findDomObject(key: string) {
-    return this.domObjects.get(key);
   }
 
   private static registerRenderObject(renderObject: RenderObject) {
