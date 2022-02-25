@@ -14,6 +14,8 @@ export class Framework {
       throw "Framework aleady initialized.";
     }
 
+    console.log("Framework initialized.");
+
     this.isInit = true;
   }
 
@@ -32,7 +34,7 @@ export class Framework {
       return;
     }
 
-    console.log(`Build ${isSibling ? "" : "sibling"}: ${renderObject.context.widgetType} #${renderObject.context.key}`);
+    console.log(`Build ${isSibling ? "sibling" : ""}: ${renderObject.context.widgetType} #${renderObject.context.key}`);
 
     this.registerRenderObject(renderObject);
 
