@@ -22,8 +22,6 @@ export abstract class StatefulWidget implements Widget {
       throw "Framework must not call builder() more than once";
     }
 
-    this.initState();
-
     this.renderObject = new StatefulWidgetRenderObject({
       key: this.props?.key,
       parentKey: context.parentKey,
@@ -34,12 +32,14 @@ export abstract class StatefulWidget implements Widget {
       dispose: () => this.dispose(),
     });
 
+    this.initState(this.renderObject.context);
+
     this.renderObject.setChildWidget(this.build(this.renderObject.context));
 
     return this.renderObject;
   }
 
-  initState(): void {}
+  initState(context: BuildContext): void {}
 
   abstract build(context: BuildContext): Widget;
 
@@ -47,7 +47,7 @@ export abstract class StatefulWidget implements Widget {
 
   setState(closure?: CallableFunction) {
     if (undefined == this.renderObject) {
-      throw "setState() called during initState().";
+      throw "setState() called before state init.";
     }
     if (this.isRebuilding) {
       throw "setState() called while widget was building. Usually happens when you call setState() in build()";
